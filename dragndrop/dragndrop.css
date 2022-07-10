@@ -1,0 +1,173 @@
+ 
+body {
+    margin: 0;
+}
+
+.page{
+    display:flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: lightblue;
+    align-items: center;
+}
+
+header{
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#top{
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    color: darkblue;
+    text-shadow: 2px 2px grey;
+}
+
+#main{
+    width: 60vw;
+    height: 60vh;
+    background: #dce4ff;
+	border: 3px groove black;
+	box-shadow: 2px 2px 3px #a0a0a0;
+}
+
+#main2{
+    width: 60vw;
+    height: 40vh;
+    background: #dce4ff;
+	border: 3px groove black;
+	box-shadow: 2px 2px 3px #a0a0a0;
+}
+
+.places{
+    height: 60%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.options{
+    height: 40%;
+    width: 100%;
+    border-top-style: solid;
+    border-top-width: 3px;
+    border-top-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.options *{
+    margin: 10px;
+}
+
+.dragto{
+    width: 70px;
+    height: 70px;
+    border-radius: 4%;
+    border-style: solid;
+    border-color: black;
+    margin: 10px;
+}
+
+.option{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    width: 70px;
+    height: 70px;
+    border-radius: 1%;
+    background-color: #ca5656;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(85, 4, 4);
+    cursor: move;
+}
+
+.description{
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 20px;
+    margin-top: 20px;
+    font-weight: bold;
+    color: darkblue;
+}
+
+.mainMenu{
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    border-radius: 5px;
+    padding: 10px 40px;
+    font-size: 22px;
+    text-decoration: none;
+    margin: 20px;
+    background-color: rgb(105, 169, 190);
+    box-shadow: 3px 5px 5px #888888;
+    color: #fff;
+    position: relative;
+    display: inline-block;
+    transition: all 1s ease;
+    transform: scale(1);
+}
+
+.mainMenu:hover{
+    background-color: darkblue;
+      /*  Making button bigger on hover  */
+    transform: scale(1.2) perspective(1px)
+}
+
+#check{
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    width: 11.7rem;
+    height: 2.8rem;
+    font-size: 22px;
+    text-decoration: none;
+    margin: 40px 20px 20px 20px;
+    background-color: rgb(105, 169, 190);
+    box-shadow: 3px 5px 5px #888888;
+    color: #fff;
+    position: relative;
+    display: inline-block;
+    transition: all 1s ease;
+}
+
+#check:hover{
+    background-color: darkblue;
+      /*  Making button bigger on hover  */
+    transform: scale(1.2) perspective(1px)
+}
+
+footer{
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-grow: 1;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+  }

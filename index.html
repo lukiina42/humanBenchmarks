@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main page</title>
+    <link rel = 'stylesheet' href='index.css'>
+</head>
+<body>
+    <div class='page'>
+        <header class = 'noselect'>
+            <div id = 'top'>
+                Human benchmarks
+            </div>
+        </header>
+
+        <main>
+
+            <aside class='scores'>
+                <h2>Top scores of creator Lukas:</h2>
+                <ul>
+                    <li>Aim trainer:   452ms</li>
+                    <li>Verbal memory: 51</li>
+                    <li>Number memory: 8</li>
+                </ul>
+                <h2 class='s2'>Top scores of his gf:</h2>
+                <ul>
+                    <li>Aim trainer:   604ms</li>
+                    <li>Verbal memory: 54</li>
+                    <li>Number memory: 9</li>
+                </ul>
+                <h2 class='s3'>Top scores of his sis Nela:</h2>
+                <ul>
+                    <li>Aim trainer:   834ms</li>
+                    <li>Verbal memory: 45</li>
+                    <li>Number memory: 7</li>
+                </ul>
+                <h2 class='s4'>Top scores his sis Ema:</h2>
+                <ul>
+                    <li>Aim trainer:   759ms</li>
+                    <li>Verbal memory: 47</li>
+                    <li>Number memory: 8</li>
+                </ul>
+            </aside>
+
+            <div id = 'main'>
+                <button onclick="window.location.href='/aim/aim.html'" class='mainMenu'>
+                    Aim trainer
+                </button>
+                
+                <button onclick="window.location.href='verbalmemory/memory.html'" class='mainMenu'>
+                    Word memory
+                </button>
+
+                <button onclick="window.location.href='dragndrop/dragndropstart.html'" class='mainMenu'>
+                   Number memory
+                </button>
+
+                <button class='mainMenu' id='showScores'>High scores</button>
+            </div>
+
+            <aside id=hide>
+
+            </aside>
+        </main>
+
+        <footer class = 'noselect'>
+            <p>&copy; Lukas 2021 xd</p>
+            <p id='connection'></p>
+        </footer>
+    </div>
+
+    <script>
+
+        let menuBool = false;
+        const showMenu = document.querySelector('#showScores');
+        showMenu.addEventListener('click', showMenufunc);
+
+        function showMenufunc(e){
+            menuBool = !menuBool;
+            if(menuBool){
+                document.body.classList.add('visible');
+            }else{
+                document.body.classList.remove('visible');
+            }
+        }
+
+        /**
+        * Callback when the browser connects to the internet
+        */
+        const updateOnlineStatus = () => {
+            let connectionEl = document.getElementById('connection');
+
+            connectionEl.innerHTML = "ONLINE";
+        }
+
+        /**
+        * Callback when the browser disconnects from the internet
+        */
+        const updateOfflineStatus = () => {
+            let connectionEl = document.getElementById('connection');
+
+            connectionEl.innerHTML = "OFFLINE";
+        }
+
+        // add listeners to page
+        window.addEventListener("online", updateOnlineStatus);
+        window.addEventListener("offline", updateOfflineStatus);
+
+        /**
+        * Handle the page load
+        */
+        window.addEventListener('load', () => {
+            if (navigator.onLine) {
+                updateOnlineStatus();
+            } else {
+                updateOfflineStatus();
+            }
+        })
+    </script>
+</body>
