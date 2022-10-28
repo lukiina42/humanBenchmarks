@@ -1,0 +1,87 @@
+body {
+  margin: 0;
+}
+
+.page {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: lightblue;
+  align-items: center;
+}
+
+header {
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#top {
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-size: 50px;
+  font-weight: bold;
+  color: darkblue;
+  text-shadow: 2px 2px grey;
+}
+
+canvas {
+  background: #dce4ff;
+  border: 3px groove black;
+  box-shadow: 2px 2px 3px #a0a0a0;
+  cursor: crosshair;
+}
+
+div:nth-child(3) {
+  margin-top: 25px;
+}
+
+.description {
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-size: 20px;
+  margin: 10px;
+  font-weight: bold;
+  color: darkblue;
+}
+
+.mainMenu {
+  font-family: "Helvetica", "Arial", sans-serif;
+  border-radius: 5px;
+  padding: 10px 40px;
+  font-size: 22px;
+  text-decoration: none;
+  margin: 20px;
+  background-color: rgb(105, 169, 190);
+  box-shadow: 3px 5px 5px #888888;
+  color: #fff;
+  position: relative;
+  display: inline-block;
+  transition: all 1s ease;
+  transform: scale(1);
+}
+
+.mainMenu:hover {
+  background-color: darkblue;
+  /*  Making button bigger on hover  */
+  transform: scale(1.2) perspective(1px);
+}
+
+footer {
+  font-family: "Helvetica", "Arial", sans-serif;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-grow: 1;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+}

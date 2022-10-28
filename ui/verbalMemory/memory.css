@@ -1,0 +1,156 @@
+svg {
+  width: 280px;
+  height: 100px;
+}
+
+.page {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: lightblue;
+  align-items: center;
+}
+
+body {
+  margin: 0;
+}
+
+header {
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#top {
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-size: 50px;
+  font-weight: bold;
+  color: darkblue;
+  text-shadow: 2px 2px grey;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 35em;
+}
+
+.score {
+  font-size: 22px;
+  font-family: "Helvetica", "Arial", sans-serif;
+  width: 17.8rem;
+  height: 1.5rem;
+  margin: 10px;
+  color: darkblue;
+}
+
+.word {
+  font-size: 22px;
+  font-family: "Helvetica", "Arial", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 17.8rem;
+  height: 2.5rem;
+  margin: 10px;
+  border-radius: 3%;
+  border-style: solid;
+  border-color: #8ba7d1;
+  border-width: 2px;
+  color: darkblue;
+}
+
+a {
+  margin-top: 100px;
+}
+
+.seenUnseen {
+  display: flex;
+  flex-direction: row;
+}
+
+.heart {
+  fill: red;
+}
+
+.disappear {
+  animation: disappear 2s alternate;
+  fill: lightblue;
+}
+
+@keyframes disappear {
+  0% {
+    fill: red;
+  }
+  50% {
+    fill: rgb(247, 173, 173);
+  }
+  100% {
+    fill: lightblue;
+  }
+}
+
+.choice {
+  border: none;
+  font-family: "Helvetica", "Arial", sans-serif;
+  border-radius: 5px;
+  padding: 1rem 0;
+  cursor: pointer;
+  width: 8rem;
+  text-align: center;
+  font-size: 22px;
+  text-decoration: none;
+  background-color: rgb(59, 182, 48);
+  box-shadow: 3px 5px 5px #888888;
+  color: #fff;
+  position: relative;
+  display: inline-block;
+  transition: all 1s ease;
+}
+
+.choice:hover {
+  background-color: rgb(33, 143, 23);
+}
+
+#seen {
+  margin-right: 32px;
+}
+
+.button {
+  border: none;
+  font-family: "Helvetica", "Arial", sans-serif;
+  border-radius: 5px;
+  padding: 1rem 0;
+  width: 18rem;
+  text-align: center;
+  font-size: 22px;
+  text-decoration: none;
+  margin: 8px;
+  background-color: rgb(105, 169, 190);
+  box-shadow: 3px 5px 5px #888888;
+  color: #fff;
+  position: relative;
+  display: inline-block;
+  transition: all 1s ease;
+  transform: scale(1);
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: darkblue;
+  /*  Making button bigger on hover  */
+  transform: scale(1.1) perspective(1px);
+}
+
+footer {
+  font-family: "Helvetica", "Arial", sans-serif;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-grow: 1;
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="memory.css" />
+    <script src="memory.js" defer></script>
+  </head>
+  <body>
+    <div class="page">
+      <header class="noselect">
+        <div id="top">Memory test</div>
+      </header>
+
+      <main class="main">
+        <svg>
+          <path
+            stroke="red"
+            id="heart1"
+            class="heart"
+            d="M 10,30 A 20,20 0,0,1 50,30 A 20,20 0,0,1 90,30 Q 90,60 50,90 Q 10,60 10,30 z"
+          />
+
+          <path
+            stroke="red"
+            id="heart2"
+            class="heart"
+            d="M 100,30 A 20,20 0,0,1 140,30 A 20,20 0,0,1 180,30 Q 180,60 140,90 Q 100,60 100,30 z"
+          />
+
+          <path
+            stroke="red"
+            id="heart3"
+            class="heart"
+            d="M 190,30 A 20,20 0,0,1 230,30 A 20,20 0,0,1 270,30 Q 270,60 230,90 Q 190,60 190,30 z"
+          />
+        </svg>
+
+        <div class="score">Score:</div>
+
+        <div class="word">testSlovo</div>
+
+        <div class="seenUnseen">
+          <button class="choice" id="seen">Seen</button>
+          <button class="choice" id="new">New</button>
+        </div>
+      </main>
+
+      <nav>
+        <button class="button" onclick="window.location.href='../index.html'">
+          Main menu
+        </button>
+      </nav>
+
+      <footer class="noselect">&copy; Lukas 2021 xd</footer>
+    </div>
+  </body>
+</html>

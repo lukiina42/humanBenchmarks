@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aim leaderboard</title>
+    <link rel="stylesheet" href="leaderboard.css" />
+    <script src="leaderboard.js" defer></script>
+  </head>
+  <body>
+    <div class="page">
+      <header class="noselect">
+        <div id="top">AIM TRAINER</div>
+      </header>
+
+      <main class="main">
+        <h2 id="leaderboardHeader">The best scores in aim trainer:</h2>
+        <ol id="leaderboard" class="list"></ol>
+
+        <button class="button" id="again">Play again</button>
+
+        <button class="button" onclick="window.location.href='../index.html'">
+          Main menu
+        </button>
+
+        <div class="toggleVisible">
+          <h1>Celebrate your good placement with a song!</h1>
+          <audio controls>
+            <source src="../sounds/rick.mp3" type="audio/mpeg" />
+            Your browser does not support the audio tag.
+          </audio>
+        </div>
+      </main>
+
+      <footer class="noselect">&copy; Lukas 2021 xd</footer>
+    </div>
+  </body>
+</html>
