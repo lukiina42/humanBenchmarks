@@ -1,11 +1,14 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { HighScores } from '../highScores/highScores.entity';
+import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn } from 'typeorm';
 
 @Entity()
 export class User {
     constructor(
+        email:string,
         username: string,
         password: string
     ){
+        this.email = email
         this.username = username
         this.password = password
     }
@@ -14,8 +17,15 @@ export class User {
   id: number;
 
   @Column({unique: true})
+  email: string;
+
+  @Column({unique: true})
   username: string;
 
   @Column()
   password: string;
+
+  @OneToOne(() => HighScores, { cascade: true })
+  @JoinColumn()
+  highScores: HighScores
 }
