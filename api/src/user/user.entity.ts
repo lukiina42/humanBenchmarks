@@ -25,7 +25,7 @@ export class User {
   @Column()
   password: string;
 
-  @OneToOne(() => HighScores, { cascade: true })
+  @OneToOne(() => HighScores, (highScores) => highScores.owner)
   @JoinColumn()
   highScores: HighScores
 }

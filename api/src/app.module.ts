@@ -6,6 +6,9 @@ import { User } from './user/user.entity';
 import { HighScores } from './highScores/highScores.entity'
 import { UsersModule } from './user/users.module';
 import { HighScoresModule } from './highScores/highScores.module';
+import { HighScoresController } from './highScores/highScores.controller';
+import { HighScoresService } from './highScores/highScores.service';
+import { UsersService } from './user/users.service';
 
 @Module({
   imports: [

@@ -3,7 +3,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
 import { genSalt, hash, compare as comparePasswords} from "bcrypt";
-import { HighScores } from 'src/highScores/highScores.entity';
 
 @Injectable()
 export class UsersService {
@@ -16,8 +15,9 @@ export class UsersService {
     return this.usersRepository.find();
   }
 
-  findOneById(id: number): Promise<User> {
-    return this.usersRepository.findOneBy({ id });
+  async findOneById(id: number): Promise<User> {
+    const user = await this.usersRepository.createQueryBuilder("user").leftJoinAndSelect("user.highScores", "highScores").where("user.id = :id", { id: id }).getOne()
+    return user
   }
 
   private findOneByUsername(username: string): Promise<User> {
@@ -44,9 +44,8 @@ export class UsersService {
     await this.usersRepository.insert(user)
   }
 
-  async addHighScore(username: string, highScores: HighScores){
-    const user = await this.findOneByUsername(username)
-    user.highScores = highScores
-    await this.usersRepository.save(user)
+  async getHighScore(id: number){
+    const user = await this.findOneById(id)
+    return user.highScores
   }
 }
