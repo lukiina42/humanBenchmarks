@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Main page</title>
+    <link rel="stylesheet" href="signup.css" />
+    <script src="signup.js" defer></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300&family=Ubuntu:wght@300&display=swap');
+    </style>
+  </head>
+  <body>
+    <div class="page">
+
+      <main>
+        <div class="mainMenuWrapper"></div>
+        <h1>
+          Sign Up
+        </h1>
+        <form id="form"> 
+          <div class="formFieldWrapper">
+            <label for="usernameField">Username</label>
+            <input class="formInput" type="text" id="usernameField" minlength="2">
+            <div class="errorDiv" id="usernameError"></div>
+          </div>
+          <div class="formFieldWrapper">
+            <label for="passwordField">Password</label>
+            <input class="formInput" type="password" id="passwordField">
+            <div class="errorDiv" id="passwordError"></div>
+          </div>
+          <div class="formFieldWrapper">
+            <label for="passwordAgainField">Password again</label>
+            <input class="formInput" type="password" id="passwordAgainField">
+            <div class="errorDiv" id="passwordAgainError"></div>
+          </div>
+          <input
+            type="submit"
+            class="mainMenu"
+            id="submitButton"
+            value="Submit"
+          >
+        </form>
+        <div class="mainMenuWrapper">
+          <input onclick="window.location.href='../index.html'" type="submit" class="mainMenu down" value="Main menu">
+        </div>
+        </main>
+
+      <footer class="noselect">
+        <p>&copy; Lukas 2021 xd</p>
+        <p id="connection"></p>
+      </footer>
+    </div>
+      </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Main page</title>
+    <link rel="stylesheet" href="login.css" />
+    <script src="login.js" defer></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300&family=Ubuntu:wght@300&display=swap');
+    </style>
+  </head>
+  <body>
+    <div class="page">
+
+      <main>
+        <div class="mainMenuWrapper"></div>
+        <h1>
+          Log In
+        </h1>
+        <form id="form"> 
+          <div class="formFieldWrapper">
+            <label for="usernameField">Username</label>
+            <input class="formInput" type="text" id="usernameField" required>
+          </div>
+          <div class="formFieldWrapper">
+            <label for="passwordField">Password</label>
+            <input class="formInput" type="password" id="passwordField" required>
+          </div>
+          <input
+            type="submit"
+            class="mainMenu"
+            id="submitButton"
+            value="Submit"
+          >
+        </form>
+        <div class="mainMenuWrapper">
+          <input onclick="window.location.href='../index.html'" type="submit" class="mainMenu down" value="Main menu">
+        </div>
+        </main>
+
+      <footer class="noselect">
+        <p>&copy; Lukas 2021 xd</p>
+      </footer>
+    </div>
+      </body>
+</html>
