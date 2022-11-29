@@ -1,8 +1,15 @@
+
+const userToken = localStorage.getItem("token")
+if(userToken){
+    document.getElementById("firstHeader").style.display = 'none'
+    document.getElementById("secondHeader").innerHTML = "Logout"
+}
+
 let menuBool = false;
 const showMenu = document.querySelector("#showScores");
 showMenu.addEventListener("click", showMenufunc);
 
-const bruh = fetch("http://localhost:3000/users/3").then(response => response.json()).then(data => console.log(data.highScores)).catch(e => console.log(e))
+//const bruh = fetch("http://localhost:3000/users/3").then(response => response.json()).then(data => console.log(data.highScores)).catch(e => console.log(e))
 
 function showMenufunc(e) {
 menuBool = !menuBool;

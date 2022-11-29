@@ -1,0 +1,35 @@
+.errorToast {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    min-width: 22rem;
+    min-height: 5rem;
+    position: fixed;
+    top: -5rem;
+    background-color: rgb(201, 61, 61);
+    color: white;
+    font-weight: bold;
+    transition: all 0.7s ease-out;
+  }
+
+.successToast{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    width: auto;
+    padding: 0 2rem;
+    min-height: 5rem;
+    position: fixed;
+    top: -5rem;
+    background-color: rgb(47, 190, 54);
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    transition: all 0.7s ease-out;
+}
+
+.visible{
+    top: 2rem;
+}

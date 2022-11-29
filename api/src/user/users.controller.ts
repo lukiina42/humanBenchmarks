@@ -28,35 +28,16 @@ export class UsersController {
     return this.userService.findAll()
   }
 
-  @Post('/login')
-  @HttpCode(200)
-  async loginUser(
-    @Body('username') username: string,
-    @Body('password') password: string,
-  ){
-    if (!password || !username) {
-      throw new BadRequestException("All fields must be filled")
-    }
-    const loginAttempt = await this.userService.loginUser(username, password)
-    if(loginAttempt){
-      return true
-    }
-      else { 
-        throw new BadRequestException("Username and password don't match!")
-    }
-  }
-
-  @Post('/signup')
+  @Post('')
   @HttpCode(204)
   async createUser(
-    @Body('email') email: string,
     @Body('username') username: string,
     @Body('password') password: string,
   ) 
     {
-      if (!email || !password || !username) {
+      if (!password || !username) {
         throw new BadRequestException("All fields must be filled")
       }
-      await this.userService.createUser(new User(email, username, password))
+      await this.userService.createUser(new User(username, password))
   }
 }

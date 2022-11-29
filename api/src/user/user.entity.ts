@@ -4,20 +4,15 @@ import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn } from 'ty
 @Entity()
 export class User {
     constructor(
-        email:string,
         username: string,
-        password: string
+        password: string,
     ){
-        this.email = email
         this.username = username
         this.password = password
     }
 
   @PrimaryGeneratedColumn()
   id: number;
-
-  @Column({unique: true})
-  email: string;
 
   @Column({unique: true})
   username: string;

@@ -1,4 +1,7 @@
 
+const errorToast = document.getElementsByClassName("errorToast")[0];
+const successToast = document.getElementsByClassName("successToast")[0];
+
 (function init(){
     document.querySelectorAll(".formInput").forEach(input => {
         input.addEventListener("change", (() => validateInputs()))
@@ -16,6 +19,9 @@
             }
         })
     })
+
+    errorToast.addEventListener("click", (e) => toast.classList.remove("visible"))
+    successToast.addEventListener("click", (e) => toast.classList.remove("visible"))
 })()
 
 let usernameTouched = false
@@ -80,13 +86,30 @@ document.getElementById("form").addEventListener('submit', (e) => {
 
     const password = document.getElementById("passwordField").value
     const username = document.getElementById("usernameField").value
-    const passwordAgain = document.getElementById("passwordAgainField").value
 
     const signupRequest = {
         username,
-        password,
-        passwordAgain
+        password
     }
 
-    console.log(signupRequest)
-})
+    fetch("http://localhost:3000/users/",
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(signupRequest)
+        }
+    )
+    .then(response => {
+        console.log(response)
+        if(response.status !== 204) throw new Error()
+        successToast.classList.add("visible")
+    })
+    .catch(error => {
+        console.log(error)
+        errorToast.classList.add("visible")
+            }
+        )
+    }
+)

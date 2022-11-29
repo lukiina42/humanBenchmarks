@@ -7,6 +7,11 @@ import { HighScores } from './highScores/highScores.entity'
 import { UsersModule } from './user/users.module';
 import { HighScoresModule } from './highScores/highScores.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { AuthModule } from './auth/auth.module';
+import { AuthService } from './auth/auth.service';
+import { JwtService } from '@nestjs/jwt';
+import { JwtModule } from '@nestjs/jwt';
+import { UsersService } from './user/users.service';
 
 @Module({
   imports: [
@@ -26,9 +31,10 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       inject: [ConfigService],
   }),
   UsersModule,
-  HighScoresModule
+  HighScoresModule,
+  AuthModule
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, AuthService, UsersService, JwtService],
 })
 export class AppModule {}

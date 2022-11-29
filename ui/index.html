@@ -6,12 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Main page</title>
     <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="common/button.css" />
     <script src="index.js" defer></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300&family=Ubuntu:wght@300&display=swap');
+    </style>
   </head>
   <body>
     <div class="page">
       <header class="noselect">
-        <div id="top">Human benchmarks</div>
+        <div class="headerText">HB</div>
+        <div class="headerButtons">
+          <button id="firstHeader" class="headerButton" onclick="window.location.href='signup/signup.html'">
+            Register
+          </button>
+          <button id="secondHeader" class="headerButton" onclick="window.location.href='login/login.html'">
+            Login
+          </button>
+        </div>
       </header>
 
       <main>
@@ -66,18 +78,6 @@
 
           <button class="mainMenu" id="showScores">High scores</button>
 
-          <button
-            onclick="window.location.href='signup/signup.html'"
-            class="mainMenu"
-          >
-            Register
-          </button>
-          <button
-            onclick="window.location.href='login/login.html'"
-            class="mainMenu"
-          >
-            Log In
-          </button>
         </div>
 
         <aside id="hide"></aside>
