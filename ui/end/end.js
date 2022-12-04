@@ -1,10 +1,3 @@
-
-const successToast = document.getElementsByClassName("successToast")[0];
-
-(function init(){
-  successToast.addEventListener("click", (e) => successToast.classList.remove("visible"))
-})();
-
 const saveHighScore = (highScores) => {
   fetch("http://localhost:3000/highScores", 
   {
@@ -15,80 +8,90 @@ const saveHighScore = (highScores) => {
       },
       body: JSON.stringify({highScores: highScores})
   }
-)
-.then(response => {
-  if(response.status !== 204) throw new Error()
-  successToast.classList.add("visible")
-})
+  )
+  .then(response => {
+    if(response.status !== 204) throw new Error()
+    successToast.classList.add("visible")
+  })
 }
 
-const userInfo = JSON.parse(localStorage.getItem("userInfo"))
+(function init(){
+  const successToast = document.getElementsByClassName("successToast")[0];
+  successToast.addEventListener("click", (e) => successToast.classList.remove("visible"))
 
-//load html tags and scores from localStorage
-const game = localStorage.getItem("latestGame");
-let p = document.querySelector("#score");
-let p2 = document.querySelector("#scoreDescription");
-const mostRecentScore = localStorage.getItem("mostRecentScore");
-let reference = document.querySelector("#again");
-let highScores = undefined
-//which game was last played and adjust innerHTML of html tags and save high score if it is good enough
-switch (game) {
-  case "memory":
-    p2.innerHTML = "Your score is: ";
-    p.innerHTML = mostRecentScore;
-    reference.addEventListener(
-      "click",
-      () => (window.location.href = "../verbalMemory/memory.html")
-    );
-    document.querySelector("#top").innerHTML = "Memory test";
 
-    if(mostRecentScore > userInfo.highScores.verbalMemory){
-      console.log(mostRecentScore, userInfo.highScores.verbalMemory)
-      highScores = {
-        ...userInfo.highScores,
-        verbalMemory: parseInt(mostRecentScore),
+})();
+
+
+(function handleNewScore(){
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"))
+
+  //load html tags and scores from localStorage
+  const game = localStorage.getItem("latestGame");
+  let p = document.querySelector("#score");
+  let p2 = document.querySelector("#scoreDescription");
+  const mostRecentScore = localStorage.getItem("mostRecentScore");
+  let reference = document.querySelector("#again");
+  let highScores = undefined
+  //which game was last played and adjust innerHTML of html tags and save high score if it is good enough
+  switch (game) {
+    case "memory":
+      p2.innerHTML = "Your score is: ";
+      p.innerHTML = mostRecentScore;
+      reference.addEventListener(
+        "click",
+        () => (window.location.href = "../verbalMemory/memory.html")
+      );
+      document.querySelector("#top").innerHTML = "Memory test";
+  
+      if(mostRecentScore > userInfo.highScores.verbalMemory){
+        console.log(mostRecentScore, userInfo.highScores.verbalMemory)
+        highScores = {
+          ...userInfo.highScores,
+          verbalMemory: parseInt(mostRecentScore),
+        }
+        saveHighScore(highScores)
       }
-      saveHighScore(highScores)
-    }
-    break;
-  case "aim":
-    p.innerHTML = mostRecentScore + "ms";
-    reference.addEventListener(
-      "click",
-      () => (window.location.href = "../aim/aim.html")
-    );
-    document.querySelector("#top").innerHTML = "Aim trainer";
-
-    if(mostRecentScore > userInfo.highScores.aimTrainer){
-      highScores = {
-        ...userInfo.highScores,
-        aimTrainer: parseFloat(mostRecentScore),
+      break;
+    case "aim":
+      p.innerHTML = mostRecentScore + "ms";
+      reference.addEventListener(
+        "click",
+        () => (window.location.href = "../aim/aim.html")
+      );
+      document.querySelector("#top").innerHTML = "Aim trainer";
+  
+      if(mostRecentScore > userInfo.highScores.aimTrainer){
+        highScores = {
+          ...userInfo.highScores,
+          aimTrainer: parseFloat(mostRecentScore),
+        }
+        saveHighScore(highScores)
       }
-      saveHighScore(highScores)
-    }
-    break;
-  case "numberMemory":
-    p2.innerHTML = "Your score is: ";
-    p.innerHTML = mostRecentScore;
-    reference.addEventListener(
-      "click",
-      () => (window.location.href = "../dragndrop/dragndropstart.html")
-    );
-    document.querySelector("#top").innerHTML = "Number memory";
-
-    if(mostRecentScore > userInfo.highScores.numberMemory){
-      highScores = {
-        ...userInfo.highScores,
-        numberMemory: parseInt(mostRecentScore),
+      break;
+    case "numberMemory":
+      p2.innerHTML = "Your score is: ";
+      p.innerHTML = mostRecentScore;
+      reference.addEventListener(
+        "click",
+        () => (window.location.href = "../dragndrop/dragndropstart.html")
+      );
+      document.querySelector("#top").innerHTML = "Number memory";
+  
+      if(mostRecentScore > userInfo.highScores.numberMemory){
+        highScores = {
+          ...userInfo.highScores,
+          numberMemory: parseInt(mostRecentScore),
+        }
+        saveHighScore(highScores)
       }
-      saveHighScore(highScores)
-    }
-    break;
-}
-
-if(highScores){
-  localStorage.setItem("userInfo", JSON.stringify({
-    ...userInfo,
-    highScores
-  }))
-}
+      break;
+  }
+  
+  if(highScores){
+    localStorage.setItem("userInfo", JSON.stringify({
+      ...userInfo,
+      highScores
+    }))
+  }
+})()
