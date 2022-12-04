@@ -19,5 +19,21 @@
   .mainMenu:hover {
     background-color: darkblue;
     /*  Making button bigger on hover  */
-    transform: scale(1.2) perspective(1px);
+    transform: scale(1.1) perspective(1px);
   }
+
+.mainMenuSelect {
+  border-radius: 5px;
+    border: none;
+    width: 230px;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 22px;
+    text-decoration: none;
+    margin: 20px;
+    background-color: rgb(105, 169, 190);
+    box-shadow: 3px 5px 5px #888888;
+    color: #fff;
+    position: relative;
+    display: inline-block;
+}

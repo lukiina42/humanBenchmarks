@@ -27,9 +27,13 @@ document.getElementById("form").addEventListener('submit', (e) => {
         return response.json()
     })
     .then(payload => {
-        if(payload.access_token){
-            console.log(payload.access_token)
-            localStorage.setItem("token", payload.access_token)
+        if(payload.token && payload.id && payload.highScores){
+            localStorage.setItem("userInfo", JSON.stringify({
+                token: payload.token.access_token,
+                username,
+                userId: payload.id,
+                highScores: payload.highScores
+            }))
             window.location.href = "../index.html"
         }else {
             throw new Error("Something went wrong")

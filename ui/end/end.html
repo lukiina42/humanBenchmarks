@@ -6,30 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Score</title>
     <link rel="stylesheet" href="end.css" />
+    <link rel="stylesheet" href="../common/toast.css" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300&family=Ubuntu:wght@300&display=swap');
+    </style>
     <script src="end.js" defer></script>
   </head>
   <body>
     <div class="page">
-      <header class="noselect">
-        <div id="top">AIM TRAINER</div>
-      </header>
+      <div class="successToast">New High Score, Congratulations!</a></div>
 
-      <main class="main">
-        <form class="form">
-          <div id="scoreDescription">Your average time per target is:</div>
-          <div id="score"></div>
-          <input type="text" placeholder="Username" id="input" />
-          <button type="submit" class="button" id="submitScore">
-            Save score
+      <div class="mainContent">
+        <header class="noselect">
+          <div id="top">AIM TRAINER</div>
+        </header>
+
+        <main class="main">
+            <div id="scoreDescription">Your average time per target is:</div>
+            <div id="score"></div>
+
+          <button class="button" id="again">Play again</button>
+
+          <button class="button" onclick="window.location.href='../index.html'">
+            Main menu
           </button>
-        </form>
-
-        <button class="button" id="again">Play again</button>
-
-        <button class="button" onclick="window.location.href='/index.html'">
-          Main menu
-        </button>
-      </main>
+        </main>
+      </div>
 
       <footer class="noselect">&copy; Lukas 2021 xd</footer>
     </div>

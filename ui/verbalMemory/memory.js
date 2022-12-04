@@ -136,21 +136,6 @@
     }
   }
 
-  //end game, store score into local storage and redirect
-  function endGame() {
-    localStorage.setItem("latestGame", "memory");
-    localStorage.setItem("mostRecentScore", score);
-    window.location.href = "../end/end.html";
-  }
-
-  //remove heart if user selects wrong button
-  function removeHeart() {
-    let heart = document.querySelector("#heart" + hearts);
-    heart.classList.toggle("disappear");
-    heart.removeAttributeNS(null, "fill", heart);
-    heart.setAttributeNS(null, "fill", "none");
-  }
-
   //handle new button, if the word is not in seenWords, then the choice is correct
   function handleNewButton(e) {
     if (seenWords.filter((word) => word === currentWord).length != 0) {
@@ -167,4 +152,19 @@
       score += 1;
       scoreField.innerHTML = "Score: " + score;
     }
+  }
+
+  //end game, store score into local storage and redirect
+  function endGame() {
+    localStorage.setItem("latestGame", "memory");
+    localStorage.setItem("mostRecentScore", score);
+    window.location.href = "../end/end.html";
+  }
+
+  //remove heart if user selects wrong button
+  function removeHeart() {
+    let heart = document.querySelector("#heart" + hearts);
+    heart.classList.toggle("disappear");
+    heart.removeAttributeNS(null, "fill", heart);
+    heart.setAttributeNS(null, "fill", "none");
   }

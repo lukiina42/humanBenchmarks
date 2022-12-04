@@ -1,96 +1,94 @@
+
+const successToast = document.getElementsByClassName("successToast")[0];
+
+(function init(){
+  successToast.addEventListener("click", (e) => successToast.classList.remove("visible"))
+})();
+
+const saveHighScore = (highScores) => {
+  fetch("http://localhost:3000/highScores", 
+  {
+      method: 'PATCH',
+      headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userInfo.token}`
+      },
+      body: JSON.stringify({highScores: highScores})
+  }
+)
+.then(response => {
+  if(response.status !== 204) throw new Error()
+  successToast.classList.add("visible")
+})
+}
+
+const userInfo = JSON.parse(localStorage.getItem("userInfo"))
+
 //load html tags and scores from localStorage
 const game = localStorage.getItem("latestGame");
 let p = document.querySelector("#score");
 let p2 = document.querySelector("#scoreDescription");
 const mostRecentScore = localStorage.getItem("mostRecentScore");
 let reference = document.querySelector("#again");
-
-//which game was last played and adjust innerHTML of html tags
+let highScores = undefined
+//which game was last played and adjust innerHTML of html tags and save high score if it is good enough
 switch (game) {
   case "memory":
     p2.innerHTML = "Your score is: ";
     p.innerHTML = mostRecentScore;
     reference.addEventListener(
       "click",
-      () => (window.location.href = "/verbalMemory/memory.html")
+      () => (window.location.href = "../verbalMemory/memory.html")
     );
     document.querySelector("#top").innerHTML = "Memory test";
+
+    if(mostRecentScore > userInfo.highScores.verbalMemory){
+      console.log(mostRecentScore, userInfo.highScores.verbalMemory)
+      highScores = {
+        ...userInfo.highScores,
+        verbalMemory: parseInt(mostRecentScore),
+      }
+      saveHighScore(highScores)
+    }
     break;
   case "aim":
     p.innerHTML = mostRecentScore + "ms";
     reference.addEventListener(
       "click",
-      () => (window.location.href = "/aim/aim.html")
+      () => (window.location.href = "../aim/aim.html")
     );
     document.querySelector("#top").innerHTML = "Aim trainer";
+
+    if(mostRecentScore > userInfo.highScores.aimTrainer){
+      highScores = {
+        ...userInfo.highScores,
+        aimTrainer: parseFloat(mostRecentScore),
+      }
+      saveHighScore(highScores)
+    }
     break;
   case "numberMemory":
     p2.innerHTML = "Your score is: ";
     p.innerHTML = mostRecentScore;
     reference.addEventListener(
       "click",
-      () => (window.location.href = "/dragndrop/dragndropstart.html")
+      () => (window.location.href = "../dragndrop/dragndropstart.html")
     );
     document.querySelector("#top").innerHTML = "Number memory";
+
+    if(mostRecentScore > userInfo.highScores.numberMemory){
+      highScores = {
+        ...userInfo.highScores,
+        numberMemory: parseInt(mostRecentScore),
+      }
+      saveHighScore(highScores)
+    }
+    break;
 }
 
-const saveScoreButton = document.querySelector("#submitScore");
-//user can save his score and attempt to get into top 10 if they wish
-saveScoreButton.addEventListener("click", (e) => {
-  e.preventDefault();
-  const input = document.querySelector("#input");
-  const value = input.value;
-  //validate form
-  if (value.length < 3) {
-    alert("Username must have more than 2 characters");
-    input.value = "";
-    return;
-  } else if (value.length > 20) {
-    alert("Username must have at most 20 characters");
-    input.value = "";
-    return;
-  }
-
-  //store the high scores if user is good enough
-  switch (game) {
-    case "memory":
-      let highScores =
-        JSON.parse(localStorage.getItem("memoryHighScores")) || [];
-      highScores.push({ username: value, mostRecentScore });
-      highScores.sort((a, b) => {
-        return b.mostRecentScore - a.mostRecentScore;
-      });
-      highScores.splice(10);
-      localStorage.setItem(
-        "memoryHighScores",
-        JSON.stringify(highScores)
-      );
-      break;
-    case "aim":
-      let highScores2 =
-        JSON.parse(localStorage.getItem("aimHighScores")) || [];
-      highScores2.push({ username: value, mostRecentScore });
-      highScores2.sort((a, b) => {
-        return a.mostRecentScore - b.mostRecentScore;
-      });
-      highScores2.splice(10);
-      localStorage.setItem("aimHighScores", JSON.stringify(highScores2));
-      break;
-    case "numberMemory":
-      let highScores3 =
-        JSON.parse(localStorage.getItem("numberHighScores")) || [];
-      highScores3.push({ username: value, mostRecentScore });
-      highScores3.sort((a, b) => {
-        return b.mostRecentScore - a.mostRecentScore;
-      }); 
-      highScores3.splice(10);
-      localStorage.setItem(
-        "numberHighScores",
-        JSON.stringify(highScores3)
-      );
-      break;
-  }
-
-  //redirect to leaderboard
-  window.location.href = "../leaderboard/leaderboard.html";
-});
+if(highScores){
+  localStorage.setItem("userInfo", JSON.stringify({
+    ...userInfo,
+    highScores
+  }))
+}
