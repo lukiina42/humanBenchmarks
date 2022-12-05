@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  font-family: 'Merriweather Sans', sans-serif;
 }
 
 .page {
@@ -11,7 +12,7 @@ body {
 }
 
 header {
-  height: 150px;
+  height: 15vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,10 +47,10 @@ li {
   border: none;
   font-family: "Helvetica", "Arial", sans-serif;
   border-radius: 5px;
-  padding: 1rem 0;
-  width: 20rem;
+  padding: 0.5rem 0;
+  width: 12rem;
   text-align: center;
-  font-size: 22px;
+  font-size: 1rem;
   text-decoration: none;
   margin: 8px;
   background-color: rgb(105, 169, 190);
@@ -65,22 +66,15 @@ li {
   cursor: pointer;
   background-color: darkblue;
   /*  Making button bigger on hover  */
-  transform: scale(1.1) perspective(1px);
+  transform: scale(1.05) perspective(1px);
 }
 
-.main {
+main {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-}
-
-h1 {
-  font-family: "Helvetica", "Arial", sans-serif;
-  font-size: 20px;
-  font-weight: bold;
-  color: darkblue;
-  margin-top: 40px;
+  height: 85vh;
 }
 
 h2 {
@@ -91,16 +85,8 @@ h2 {
   color: darkblue;
 }
 
-.toggleVisible {
-  display: none;
-}
-
-.visible {
-  display: block;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
+#leaderboard {
+  min-height: 8rem;
 }
 
 footer {
@@ -109,5 +95,4 @@ footer {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  flex-grow: 1;
 }

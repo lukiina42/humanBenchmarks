@@ -1,7 +1,7 @@
 
 const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
-(function init(){
+(function initHeader(){
     const registerButton = document.getElementById("firstHeader")
     const loginLogoutButton = document.getElementById("secondHeader")
     
@@ -27,9 +27,9 @@ const userInfo = JSON.parse(localStorage.getItem("userInfo"));
         showMenu.style.display = 'none'
         return
     }
-    document.getElementById("aimScore").innerHTML = `${userInfo.highScores.aimTrainer} ms`
-    document.getElementById("verbalScore").innerHTML = userInfo.highScores.verbalMemory
-    document.getElementById("numberScore").innerHTML = userInfo.highScores.numberMemory
+    document.getElementById("aimScore").innerHTML = userInfo.highScores?.aimTrainer ? `${userInfo.highScores.aimTrainer} ms` : "No data"
+    document.getElementById("verbalScore").innerHTML = userInfo.highScores?.verbalMemory ? userInfo.highScores.verbalMemory : "No data"
+    document.getElementById("numberScore").innerHTML = userInfo.highScores?.numberMemory ? userInfo.highScores.numberMemory : "No data"
     
     let menuBool = false;
     showMenu.addEventListener("click", showMenufunc);

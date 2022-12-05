@@ -27,7 +27,8 @@ document.getElementById("form").addEventListener('submit', (e) => {
         return response.json()
     })
     .then(payload => {
-        if(payload.token && payload.id && payload.highScores){
+        console.log(payload)
+        if(payload.token && payload.id){
             localStorage.setItem("userInfo", JSON.stringify({
                 token: payload.token.access_token,
                 username,
