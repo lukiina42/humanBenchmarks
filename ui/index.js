@@ -1,14 +1,13 @@
 
+const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+
 (function init(){
-    const userInfo = JSON.parse(localStorage.getItem("userInfo"))
     const registerButton = document.getElementById("firstHeader")
     const loginLogoutButton = document.getElementById("secondHeader")
     
     if(userInfo){
         registerButton.style.display = 'none'
         loginLogoutButton.innerHTML = "Logout"
-    }else{
-        showMenu.style.display = 'none'
     }
     
     loginLogoutButton.addEventListener("click", () => {
@@ -24,6 +23,14 @@
 
 (function initShowScores(){
     const showMenu = document.querySelector("#showScores");
+    if(!userInfo){
+        showMenu.style.display = 'none'
+        return
+    }
+    document.getElementById("aimScore").innerHTML = `${userInfo.highScores.aimTrainer} ms`
+    document.getElementById("verbalScore").innerHTML = userInfo.highScores.verbalMemory
+    document.getElementById("numberScore").innerHTML = userInfo.highScores.numberMemory
+    
     let menuBool = false;
     showMenu.addEventListener("click", showMenufunc);
     

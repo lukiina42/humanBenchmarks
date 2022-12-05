@@ -28,7 +28,29 @@
 
       <main>
         <aside class="scores">
-          <h2>This is completely epic</h2>
+          <table>
+            <thead>
+              <tr>
+                <th class="desc" scope="col">Game</th>
+                <th scope="col">Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th class="desc" scope="row">Aim trainer</th>
+                <th id="aimScore" scope="row"></th>
+              </tr>
+              <tr>
+                <th class="desc" scope="row">Number memory</th>
+                <th id="verbalScore" scope="row"></th>
+              </tr>
+          
+              <tr>
+                <th class="desc" scope="row">Verbal memory</th>
+                <th id="numberScore" scope="row"></th>
+              </tr>
+            </tbody>
+          </table>
         </aside>
         <div id="main">
           <button
@@ -54,7 +76,7 @@
 
           <button class="mainMenu" id="showScores">Your High scores</button>
 
-          <button class="mainMenu" id="highScores">High scores</button>
+          <button class="mainMenu" id="leaderboard" onclick="window.location.href='leaderboard/leaderboard.html'">Leaderboard</button>
 
         </div>
 

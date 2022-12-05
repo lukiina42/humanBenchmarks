@@ -141,3 +141,17 @@ footer {
 p {
   margin: 5px;
 }
+
+th {
+  padding: 0.2rem;
+}
+
+.desc {
+  text-align: start;
+  padding-right: 10px;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 15px;
+}
