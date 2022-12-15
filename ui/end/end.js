@@ -2,7 +2,6 @@ const userInfo = JSON.parse(localStorage.getItem("userInfo"))
 const successToast = document.getElementsByClassName("successToast")[0];
 
 const saveHighScore = (highScores) => {
-  console.log(highScores)
   fetch("http://localhost:3000/highScores", 
   {
       method: 'PATCH',
@@ -14,14 +13,27 @@ const saveHighScore = (highScores) => {
   }
   )
   .then(response => {
-    if(response.status !== 204) throw new Error()
+    if(response.status !== 201) throw new Error()
     successToast.classList.add("visible")
+    console.log(response)
+    return response.json()
+  .then(data => {
+    if(userInfo.highScores.id === undefined) {
+      userInfo = {
+        highScores: {
+          id: data.highScoreId,
+          ...highScores
+        },
+        ...userInfo
+      }
+      localStorage.setItem("userInfo", JSON.stringify(userInfo))
+    }
+  })
   })
 }
 
 (function init(){
   successToast.addEventListener("click", (e) => successToast.classList.remove("visible"))
-
 })();
 
 

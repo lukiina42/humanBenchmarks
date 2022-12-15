@@ -11,6 +11,10 @@ body {
   align-items: center;
 }
 
+main {
+  width: 100%;
+}
+
 header {
   height: 15vh;
   display: flex;
@@ -58,7 +62,7 @@ li {
   color: #fff;
   position: relative;
   display: inline-block;
-  transition: all 1s ease;
+  transition: all 0.2s ease;
   transform: scale(1);
 }
 
@@ -95,4 +99,99 @@ footer {
   display: flex;
   justify-content: center;
   align-items: flex-end;
+}
+
+.leaderboardWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 8rem;
+  margin: 2rem 0;
+}
+
+.leaderboardRowWrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  position: relative;
+}
+
+.leaderboardItem {
+  background-color: darkblue;
+  min-width: 30px;
+}
+
+/* bevel size, left offset and color settings next 3 lines */ 
+
+.bevel { 
+  border-width: 35px;
+  border-color: darkblue; 
+  border-style:solid;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+ }
+
+.bvc { /* width of overall box, variable or fixed */ 
+    margin: 0 auto;
+    margin-bottom: 15px;
+}
+
+.bvc .topr, .bvc .topl, .bvc .bottomr, .bvc .bottoml { height: 0px; width: 0; }
+.bvc .topr, .bvc .topl { border-top: 0; width: 0px;}
+.bvc .bottomr, .bvc .bottoml { border-bottom: 0; }
+.bvc .rightBevel { border-right-color: transparent; border-left: 0;}
+.bvc .leftBevel { border-left-color: transparent;  border-right: 0; }
+
+/* .moveLeft {
+  position: absolute;
+  left: 40px;
+}
+
+.moveLeftLeft {
+  position: absolute;
+  left: 75px;
+} */
+
+/* .moveRight {
+  position: absolute;
+  right: 40px;
+} */
+
+.name {
+  color: white;
+  height: 35px;
+  min-width: 6rem;
+  background-color: darkblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.score {
+  color: white;
+  height: 35px;
+  min-width: 25px;
+  background-color: darkblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.boardPlace {
+  color: white;
+  height: 35px;
+  width: 25px;
+  background-color: darkblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.horizontalDiv {
+  display: flex;
+  flex-direction: row;
 }
