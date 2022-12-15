@@ -18,4 +18,9 @@ export class HighScoresService {
         owner
     })
   }
+
+  async getTop10HighScores(game: string){
+    const result = await this.highScoresRepository.createQueryBuilder("highScore").leftJoinAndSelect("highScore.owner", "owner").addOrderBy(`highScore.${game}`, game === "aimTrainer" ? "DESC" : "ASC").limit(10).getMany()
+    return result
+  }
 }

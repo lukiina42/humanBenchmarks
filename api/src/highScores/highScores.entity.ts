@@ -18,13 +18,13 @@ export class HighScores {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({nullable: true})
   verbalMemory: number
 
-  @Column()
+  @Column({nullable: true})
   numberMemory: number
 
-  @Column({type: "decimal", precision: 10, scale: 2, default: 0})
+  @Column({type: "decimal", precision: 10, scale: 2, default: 0, nullable: true})
   aimTrainer: number
 
   @OneToOne(() => User, (user) => user.highScores)

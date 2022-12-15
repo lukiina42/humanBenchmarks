@@ -1,4 +1,4 @@
-import { Controller, Request, Body, HttpCode, UseGuards, Patch, NotFoundException } from '@nestjs/common';
+import { Controller, Request, Body, HttpCode, UseGuards, Patch, NotFoundException, Get, Param } from '@nestjs/common';
 import { HighScores } from '../highScores/highScores.entity';
 import { User } from '../user/user.entity';
 import { UsersService } from '../user/users.service';
@@ -16,9 +16,17 @@ export class HighScoresController{
         @Request() req,
         @Body('highScores') highScores: HighScores
     ){
-        console.log(highScores)
         const owner = await this.userService.findOneById(req.user.userId)
         if(!owner) throw new NotFoundException(`User with id ${req.user.userId} was not found`)
         await this.highScoresService.addHighScore(owner, highScores)
+    }
+
+    @Get(":game")
+    @HttpCode(200)
+    async getTop10Scores(
+        @Param("game") game: string
+    ){
+        const scores = await this.highScoresService.getTop10HighScores(game)
+        return scores
     }
 }

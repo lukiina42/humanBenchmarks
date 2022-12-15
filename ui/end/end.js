@@ -1,4 +1,8 @@
+const userInfo = JSON.parse(localStorage.getItem("userInfo"))
+const successToast = document.getElementsByClassName("successToast")[0];
+
 const saveHighScore = (highScores) => {
+  console.log(highScores)
   fetch("http://localhost:3000/highScores", 
   {
       method: 'PATCH',
@@ -16,15 +20,13 @@ const saveHighScore = (highScores) => {
 }
 
 (function init(){
-  const successToast = document.getElementsByClassName("successToast")[0];
   successToast.addEventListener("click", (e) => successToast.classList.remove("visible"))
-
 
 })();
 
 
 (function handleNewScore(){
-  const userInfo = JSON.parse(localStorage.getItem("userInfo"))
+  console.log(userInfo)
 
   //load html tags and scores from localStorage
   const game = localStorage.getItem("latestGame");
@@ -32,6 +34,13 @@ const saveHighScore = (highScores) => {
   let p2 = document.querySelector("#scoreDescription");
   const mostRecentScore = localStorage.getItem("mostRecentScore");
   let reference = document.querySelector("#again");
+  if(!userInfo.highScores){
+    userInfo.highScores = {
+      verbalMemory: null,
+      numberMemory: null,
+      aimTrainer: null
+    }
+  }
   let highScores = undefined
   //which game was last played and adjust innerHTML of html tags and save high score if it is good enough
   switch (game) {
@@ -44,8 +53,7 @@ const saveHighScore = (highScores) => {
       );
       document.querySelector("#top").innerHTML = "Memory test";
   
-      if(mostRecentScore > userInfo.highScores.verbalMemory){
-        console.log(mostRecentScore, userInfo.highScores.verbalMemory)
+      if(userInfo.highScores.verbalMemory === null || mostRecentScore > userInfo.highScores.verbalMemory){
         highScores = {
           ...userInfo.highScores,
           verbalMemory: parseInt(mostRecentScore),
@@ -61,7 +69,7 @@ const saveHighScore = (highScores) => {
       );
       document.querySelector("#top").innerHTML = "Aim trainer";
   
-      if(mostRecentScore > userInfo.highScores.aimTrainer){
+      if(userInfo.highScores.aimTrainer === null || mostRecentScore < userInfo.highScores.aimTrainer){
         highScores = {
           ...userInfo.highScores,
           aimTrainer: parseFloat(mostRecentScore),
@@ -78,7 +86,7 @@ const saveHighScore = (highScores) => {
       );
       document.querySelector("#top").innerHTML = "Number memory";
   
-      if(mostRecentScore > userInfo.highScores.numberMemory){
+      if(userInfo.highScores.numberMemory === null || mostRecentScore > userInfo.highScores.numberMemory){
         highScores = {
           ...userInfo.highScores,
           numberMemory: parseInt(mostRecentScore),

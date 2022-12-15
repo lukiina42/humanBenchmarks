@@ -66,7 +66,7 @@ main {
   color: darkblue;
   font-weight: bold;
   font-size: 15px;
-  background-color: rgb(169, 169, 209);
+  background-color: #FF0018;
   width: 300px;
   display: flex;
   align-items: center;
@@ -143,15 +143,21 @@ p {
 }
 
 th {
-  padding: 0.2rem;
+  padding: 0.5rem;
 }
 
 .desc {
   text-align: start;
   padding-right: 10px;
+  background-color: #FFFF41;
+}
+
+.values {
+  background-color: #FFA52C;
 }
 
 table {
   border-collapse: separate;
-  border-spacing: 15px;
+  border-radius: 5px;
+  border-spacing: 0;
 }

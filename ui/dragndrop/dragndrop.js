@@ -196,7 +196,6 @@ $(document).ready(function () {
         elem.innerHTML = randNumber;
         dragToElems[i].appendChild(elem);
         $(dragToElems[i]).data("foo", dragToElems[i].firstChild.innerHTML);
-        console.log($(dragToElems[i]).data("foo"));
       }
     };
 

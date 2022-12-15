@@ -1,4 +1,4 @@
-
+const showMenu = document.querySelector("#showScores");
 const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
 (function initHeader(){
@@ -14,6 +14,7 @@ const userInfo = JSON.parse(localStorage.getItem("userInfo"));
         if(loginLogoutButton.innerHTML === "Logout"){
             localStorage.removeItem("userInfo")
             loginLogoutButton.innerHTML = "Login"
+            showMenu.style.display = 'none'
             registerButton.style.display = 'inline-block'
         }else{
             window.location.href='login/login.html'
@@ -22,7 +23,6 @@ const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 })();
 
 (function initShowScores(){
-    const showMenu = document.querySelector("#showScores");
     if(!userInfo){
         showMenu.style.display = 'none'
         return
