@@ -1,5 +1,5 @@
 const showMenu = document.querySelector("#showScores");
-const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+let userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
 (function initHeader(){
     const registerButton = document.getElementById("firstHeader")

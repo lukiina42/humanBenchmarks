@@ -146,21 +146,6 @@ footer {
 .bvc .rightBevel { border-right-color: transparent; border-left: 0;}
 .bvc .leftBevel { border-left-color: transparent;  border-right: 0; }
 
-/* .moveLeft {
-  position: absolute;
-  left: 40px;
-}
-
-.moveLeftLeft {
-  position: absolute;
-  left: 75px;
-} */
-
-/* .moveRight {
-  position: absolute;
-  right: 40px;
-} */
-
 .name {
   color: white;
   height: 35px;
@@ -179,6 +164,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-right: 10px;
 }
 
 .boardPlace {

@@ -19,7 +19,7 @@
   .mainMenu:hover {
     background-color: darkblue;
     /*  Making button bigger on hover  */
-    transform: scale(1.1) perspective(1px);
+    transform: scale(1.05) perspective(1px);
   }
 
 .mainMenuSelect {

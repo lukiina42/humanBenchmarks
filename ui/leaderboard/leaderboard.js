@@ -54,7 +54,7 @@ const handleButtonClick = (gameName) => {
             newScoreListItem.classList.add("leaderboardRowWrapper")
             const placeDiv = document.createElement("div")
             placeDiv.classList.add("boardPlace")
-            placeDiv.innerHTML = index + 1
+            placeDiv.innerHTML = `${index + 1}.`
 
             const firstDiv = document.createElement("div")
             firstDiv.classList.add("horizontalDiv")
@@ -94,6 +94,7 @@ const handleButtonClick = (gameName) => {
             if(list.firstChild === null){
                 const noResultsTextDiv = document.createElement("div")
                 noResultsTextDiv.innerHTML = "No results here yet :("
+                noResultsTextDiv.style.fontWeight = "bold"
                 list.appendChild(noResultsTextDiv)
             }
         })

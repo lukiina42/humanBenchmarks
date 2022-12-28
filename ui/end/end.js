@@ -1,8 +1,9 @@
-const userInfo = JSON.parse(localStorage.getItem("userInfo"))
+let userInfo = JSON.parse(localStorage.getItem("userInfo"))
 const successToast = document.getElementsByClassName("successToast")[0];
 
 const saveHighScore = (highScores) => {
-  fetch("http://localhost:3000/highScores", 
+  console.log(highScores)
+  fetch("http://localhost:3000/highScores",
   {
       method: 'PATCH',
       headers: {
@@ -18,13 +19,14 @@ const saveHighScore = (highScores) => {
     console.log(response)
     return response.json()
   .then(data => {
+    //assing id to high scores so that it is not duplicated in db
     if(userInfo.highScores.id === undefined) {
       userInfo = {
+        ...userInfo,
         highScores: {
           id: data.highScoreId,
           ...highScores
-        },
-        ...userInfo
+        }
       }
       localStorage.setItem("userInfo", JSON.stringify(userInfo))
     }
@@ -38,8 +40,6 @@ const saveHighScore = (highScores) => {
 
 
 (function handleNewScore(){
-  console.log(userInfo)
-
   //load html tags and scores from localStorage
   const game = localStorage.getItem("latestGame");
   let p = document.querySelector("#score");
