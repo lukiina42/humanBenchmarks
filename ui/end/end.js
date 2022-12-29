@@ -46,7 +46,7 @@ const saveHighScore = (highScores) => {
   let p2 = document.querySelector("#scoreDescription");
   const mostRecentScore = localStorage.getItem("mostRecentScore");
   let reference = document.querySelector("#again");
-  if(userInfo && userInfo.highScores){
+  if(userInfo && userInfo.highScores === null){
     userInfo.highScores = {
       verbalMemory: null,
       numberMemory: null,
