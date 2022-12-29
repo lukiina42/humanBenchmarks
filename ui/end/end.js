@@ -46,7 +46,7 @@ const saveHighScore = (highScores) => {
   let p2 = document.querySelector("#scoreDescription");
   const mostRecentScore = localStorage.getItem("mostRecentScore");
   let reference = document.querySelector("#again");
-  if(!userInfo.highScores){
+  if(userInfo && userInfo.highScores){
     userInfo.highScores = {
       verbalMemory: null,
       numberMemory: null,
@@ -65,7 +65,7 @@ const saveHighScore = (highScores) => {
       );
       document.querySelector("#top").innerHTML = "Memory test";
   
-      if(userInfo.highScores.verbalMemory === null || mostRecentScore > userInfo.highScores.verbalMemory){
+      if(userInfo && (userInfo.highScores.verbalMemory === null || mostRecentScore > userInfo.highScores.verbalMemory)){
         highScores = {
           ...userInfo.highScores,
           verbalMemory: parseInt(mostRecentScore),
@@ -81,7 +81,7 @@ const saveHighScore = (highScores) => {
       );
       document.querySelector("#top").innerHTML = "Aim trainer";
   
-      if(userInfo.highScores.aimTrainer === null || mostRecentScore < userInfo.highScores.aimTrainer){
+      if(userInfo && (userInfo.highScores.aimTrainer === null || mostRecentScore < userInfo.highScores.aimTrainer)){
         highScores = {
           ...userInfo.highScores,
           aimTrainer: parseFloat(mostRecentScore),
@@ -98,7 +98,7 @@ const saveHighScore = (highScores) => {
       );
       document.querySelector("#top").innerHTML = "Number memory";
   
-      if(userInfo.highScores.numberMemory === null || mostRecentScore > userInfo.highScores.numberMemory){
+      if(userInfo && (userInfo.highScores.numberMemory === null || mostRecentScore > userInfo.highScores.numberMemory)){
         highScores = {
           ...userInfo.highScores,
           numberMemory: parseInt(mostRecentScore),
