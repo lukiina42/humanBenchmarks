@@ -1,0 +1,38 @@
+#!/bin/bash
+
+#Api part
+cd /home/ec2-user/hbApi/humanBenchmarks
+
+if [[ $1 ]]
+then
+        echo "Checkout to $1"
+else
+        echo "Git branch not specified"
+        exit 1
+fi
+
+sudo git checkout "$1"
+
+if (sudo git fetch) then
+        echo "Git fetched"
+else
+        echo "Unable to fetch"
+        exit 1
+fi
+
+if (sudo git rebase origin/$1) then
+        echo "Git rebased"
+else
+        echo "Unable to rebase, quitting rebase"
+        sudo git rebase --abort
+        exit 1
+fi
+
+sudo systemctl restart hbApiService.service
+
+#UI part
+rm -r /var/www/html
+mkdir /var/www/html
+cp -r /home/ec2-user/hbApi/humanBenchmarks/ui/* /var/www/html/
+
+echo "Successful deploy!"
