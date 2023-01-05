@@ -18,6 +18,6 @@ jobs:
       - name: "Test the api app"
         working-directory: ./api
         run: npm test
-      - name: "Buil the app"
+      - name: "Build the app"
         working-directory: ./api
         run:  npm run build
