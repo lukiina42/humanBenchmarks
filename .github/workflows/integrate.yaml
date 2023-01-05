@@ -12,7 +12,12 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 16
-      - run: cd api
-      - run: npm ci
-      - run: npm test
-      - run: npm run build
+      - name: "Run npm ci to install packages in automated env"
+        working-directory: ./api
+        run: npm ci
+      - name: "Test the api app"
+        working-directory: ./api
+        run: npm test
+      - name: "Buil the app"
+        working-directory: ./api
+        run:  npm run build
