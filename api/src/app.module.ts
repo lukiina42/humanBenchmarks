@@ -10,7 +10,6 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
 import { AuthService } from './auth/auth.service';
 import { JwtService } from '@nestjs/jwt';
-import { JwtModule } from '@nestjs/jwt';
 import { UsersService } from './user/users.service';
 
 @Module({

@@ -25,4 +25,9 @@ export class AppController {
   getProfile(@Request() req) {
     return req.user;
   }
+
+  @Get('/getHello')
+  getHello(){
+    return "Hello World!"
+  }
 }
