@@ -16,4 +16,4 @@ jobs:
         key: ${{ secrets.EC2_KEY }}
         port: 22
         script: |
-          ./deployScript.sh aws-rds-connection
+          ls
