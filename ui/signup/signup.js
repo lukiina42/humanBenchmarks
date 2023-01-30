@@ -92,7 +92,7 @@ document.getElementById("form").addEventListener('submit', (e) => {
         password
     }
 
-    fetch("http://localhost:3000/users/",
+    fetch("http://172.31.33.234:3000/users/",
         {
             method: 'POST',
             headers: {

@@ -12,7 +12,7 @@ document.getElementById("form").addEventListener('submit', (e) => {
         password
     }
 
-    fetch("http://localhost:3000/auth/login", 
+    fetch("http://172.31.33.234:3000/auth/login", 
         {
             method: 'POST',
             headers: {

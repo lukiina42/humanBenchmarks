@@ -37,7 +37,7 @@ const handleButtonClick = (gameName) => {
     while (list.firstChild) {
         list.removeChild(list.lastChild);
       }
-    fetch(`http://localhost:3000/highScores/${gameName}`)
+    fetch(`http://172.31.33.234:3000/highScores/${gameName}`)
     .then(response => response.json())
     .then(data => {
         data

@@ -3,7 +3,7 @@ const successToast = document.getElementsByClassName("successToast")[0];
 
 const saveHighScore = (highScores) => {
   console.log(highScores)
-  fetch("http://localhost:3000/highScores",
+  fetch("http://172.31.33.234:3000/highScores",
   {
       method: 'PATCH',
       headers: {
